@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ziptube Test</title>
+        <meta charset="utf-8">
+        <style media="screen" type="text/css">
+            body{
+                width:340px;
+                height:450px;
+                margin:0 auto;
+            }
+            
+            body *{
+                text-align: center;
+                overflow-wrap: break-word;
+                box-sizing:border-box;
+            }
+            
+            #logo{
+                display:block;
+                margin:0 auto;
+                margin-top:1rem;
+            }
+
+            #btnCover{
+                text-align: center;
+                margin-top:1.25rem;
+            }
+
+            .btns{
+                width:35px;
+                height:15px;
+                border-radius: 3px;
+                box-shadow:0 0 3px darkgray;
+                display:inline-block;
+                vertical-align: top;
+                margin:0.75rem;
+                cursor:pointer;
+
+                color: #525252;
+            }
+        </style>
+       
+    </head>
+    <body>
+        <img src="logo.png" id="logo">
+        <div id="btnCover">
+            <div class="btns" id="addBtn">
+                추가
+            </div>
+            <div class="btns" id="delBtn">
+                삭제
+            </div>
+        </div>
+        <form method = "POST">
+            <div id="showUrl">
+                <!-- 클릭 시 추가 혹은 삭제 -->
+            </div>
+        </form>
+
+        <script src="popup.js">
+        </script>
+    </body>
+</html>

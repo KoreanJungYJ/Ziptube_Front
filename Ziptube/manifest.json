@@ -1,0 +1,17 @@
+{
+    "manifest_version" : 2,
+    
+    "name" : "Ziptube Extension",
+    "version" : "1.0",
+    "description" : "Ziptube Test File",
+    "browser_action" : {
+        "default_icon" : "logoZ.png",
+        "default_popup" : "popup.html"
+    },
+    
+    "permissions" : [
+        "activeTab",
+        "<all_urls>",
+        "tabs"
+    ]
+}
