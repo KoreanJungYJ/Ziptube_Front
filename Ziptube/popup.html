@@ -27,7 +27,7 @@
                 margin-top:1.25rem;
             }
 
-            .btns{
+            #btnCover .btns{
                 width:35px;
                 height:15px;
                 border-radius: 3px;
@@ -38,6 +38,21 @@
                 cursor:pointer;
 
                 color: #525252;
+            }
+
+            /* checkbox는 delBtn을 눌렀을 때만 display상으로 보여지도록 */
+            .boxes{
+                display:none;
+                width:15px;
+                height:15px;
+            }
+
+            .urls{
+                border:0;
+                border-bottom:1px solid darkgray;
+                margin-top:1rem;
+                width:15rem;
+                margin-left:1rem;
             }
         </style>
        
@@ -50,6 +65,9 @@
             </div>
             <div class="btns" id="delBtn">
                 삭제
+            </div>
+            <div class="btns" id="cancelBtn">
+                취소
             </div>
         </div>
         <form method = "POST">
