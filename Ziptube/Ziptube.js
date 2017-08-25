@@ -29,10 +29,20 @@ function addUrl(){
         addDiv.innerHTML = mainForm;
         showPart.appendChild(addDiv);
 
+        addCnt++;
+
         //button display 변경
         downloadBtn.style.display = "block";
 
-        //youtube동영상 title - 지금은 임시로 url 추가
+        //youtube동영상 title 값 저장
+        chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+            var items = {"url" : tabs[addCnt].url};
+            
+            chrome.storage.local.set(items, function(){
+                console.log("saved");
+            });
+        });
+        
 
     });
 }
