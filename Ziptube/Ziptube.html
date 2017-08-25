@@ -11,17 +11,176 @@
         <meta name="Other Agent" content="정윤재">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta property="og:type" content="Chrome Extension Program">
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
         <style media="screen" type="text/css">
+        @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
             body{
                 width:21.25rem;
                 height:28.12rem;
                 margin:0 auto;
             }
+
+            *{
+                box-sizing:border-box;
+                margin:0;
+                padding:0;
+                border:0;
+                outline:none;
+                font-family: 'NanumSquare', sans-serif;
+                text-align: center;
+            }
+
+            #mainPart{
+                width:100%;
+                height:45%;
+                background: linear-gradient(to right bottom, #0acffe, #406aff);
+            }
+
+            #mainPart #logo{
+                color:white;
+                font-size:1.1rem;
+                letter-spacing: 1px;
+                font-weight:600;
+                padding-top:1rem;
+            }
+
+            #mainPart #exitImg{
+                width:15px;
+                position:absolute;
+                right:0.8rem;
+                top:1rem;
+                cursor:pointer;
+            }
+
+            #mainPart h1{
+                color:white;
+                letter-spacing: 1px;
+                padding-top:2.5rem;
+                font-size:1.7rem;
+            }
+
+            #mainPart .btns{
+                width:28%;
+                height:2.2rem;
+                border:1px solid white;
+                display:inline-block;
+                border-radius: 50px;
+                margin: 3px;
+                margin-top:2.8rem;
+                transition: 0.6s;
+                cursor:pointer;
+
+                color:white;
+                font-size:0.8rem;
+                font-weight:normal;
+                letter-spacing: 0.6rem;
+                padding-top:0.4rem;
+                padding-left:10px;
+                font-family:'Noto Sans KR';
+            }
+
+            #mainPart .btns:hover{
+                background-color:white;
+                color:#495aff;
+            }
+
+            /* url 및 title 띄워주는 부분 */
+
+            #urlPart{
+                overflow-y:auto;
+                width:100%;
+                height:35%;
+            }
+
+            /* 추가 부분 */
+            label{
+                width:100%;
+                height:3.5rem;
+                display:block;
+            }
+
+            label .checkBoxes{
+                display:inline-block;
+                width:1.1rem;
+                height:1.1rem;
+                vertical-align: middle;
+            }
+
+            label .urlTitles{
+                display:inline-block;
+                width:85%;
+                height:1.8rem;
+                margin-left:0.8rem;
+                margin-top:0.9rem;
+                font-family:'NanumSquare';
+                border-bottom:1px solid #f5f5f5;
+            }
+
+            /* 다운이나 삭제 관련 버튼 있는 곳 */
+            #downloadPart{
+                width:100%;
+                height:14%;
+                background: linear-gradient(to right, #0acffe, #406aff);
+                position:absolute;
+                bottom:0;
+                display:none;
+            }
+
+            #downloadPart #downloadBtn{
+                width:7rem;
+                height:2.15rem;
+                border:1.5px solid white;
+                border-radius: 50px;
+                margin:0 auto;
+                margin-top:0.95rem;
+                cursor:pointer;
+                transition:0.4s;
+
+                text-align: center;
+                color:white;
+                font-family:'NanumSquare';
+                font-weight:bold;
+                font-size:0.85rem;
+                padding-top:8.5px;
+                letter-spacing: 0.5px;
+            }
+
+            #downloadPart #downloadBtn:hover{
+                background-color:white;
+                color:#406aff;
+            }
         </style>
         <script src="Ziptube.js"></script>
     </head>
     <body>
-        
+        <div id="mainPart">
+            <div id="logo">
+                ZIPTUBE
+            </div>
+            <img src="../logo/logoX.png" id="exitImg">
+
+            <h1>환영합니다!</h1>
+            <div class="btns" id="addBtn">
+                추가
+            </div>
+            <div class="btns">
+                삭제
+            </div>
+            <div class="btns">
+                취소
+            </div>
+        </div>
+        <div id="urlPart">
+            <div id="urlCover">
+                <!-- 보여줄 url들이 있는 곳 -->
+            <div>
+        </div>
+        <div id="downloadPart">
+            <div id="downloadBtn">
+                다운로드
+            </div>
+        </div>
     </body>
 </html>
