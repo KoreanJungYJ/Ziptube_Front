@@ -34,15 +34,17 @@ function addUrl(){
         //button display 변경
         downloadBtn.style.display = "block";
 
-        //youtube동영상 title 값 저장
-        chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
-            var items = {"url" : tabs[addCnt].url};
+        // title 값 저장
+        chrome.tabs.getSelected(null, function(tabs){
+            var urlTitles = document.getElementsByClassName('urlTitles');
+            var saveArr = new Array();
             
-            chrome.storage.local.set(items, function(){
-                console.log("saved");
-            });
+            for(let inputCnt = 0; inputCnt < addCnt; inputCnt++){
+                urlTitles[inputCnt].value = tabs.url;
+                saveArr[inputcnt] = urlTitle[inputcnt].value;
+               
+            }
+            
         });
-        
-
     });
 }
