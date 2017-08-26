@@ -13,10 +13,5 @@
         "activeTab",
         "<all_urls>",
         "tabs"
-    ],
-
-    "background" : {
-        "persistent" : false,
-        "scripts" : ["Ziptube.js"]
-    }
+    ]
 }
