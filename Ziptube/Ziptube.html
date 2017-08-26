@@ -87,11 +87,17 @@
             }
 
             /* url 및 title 띄워주는 부분 */
+            
+            #hiddenScroll{
+                width:20rem;
+                height:41%;
+                overflow:hidden;
+            }
 
-            #urlPart{
-                overflow-y:auto;
-                width:100%;
-                height:35%;
+            #hiddenScroll #urlPart{
+                width:23rem;
+                height:100%;
+                overflow-y:scroll;
             }
 
             /* 추가 부분 */
@@ -172,11 +178,15 @@
                 취소
             </div>
         </div>
-        <div id="urlPart">
-            <div id="urlCover">
-                <!-- 보여줄 url들이 있는 곳 -->
-            <div>
+        
+        <div id="hiddenScroll">
+            <div id="urlPart">
+                <div id="urlCover">
+                    <!-- 보여줄 url들이 있는 곳 -->
+                <div>
+            </div>
         </div>
+        
         <div id="downloadPart">
             <div id="downloadBtn">
                 다운로드

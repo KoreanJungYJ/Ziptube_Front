@@ -29,22 +29,22 @@ function addUrl(){
         addDiv.innerHTML = mainForm;
         showPart.appendChild(addDiv);
 
-        addCnt++;
-
         //button display 변경
         downloadBtn.style.display = "block";
-
+        
         // title 값 저장
         chrome.tabs.getSelected(null, function(tabs){
-            var urlTitles = document.getElementsByClassName('urlTitles');
-            var saveArr = new Array();
-            
-            for(let inputCnt = 0; inputCnt < addCnt; inputCnt++){
-                urlTitles[inputCnt].value = tabs.url;
-                saveArr[inputcnt] = urlTitle[inputcnt].value;
-               
+            var inputCnt;
+
+            for(inputCnt = 0; inputCnt < addCnt; inputCnt++){
+                localStorage["urlValues"] = tabs.url;
             }
-            
         });
+
+        //value값 local에 저장 - 사라지지 않도록
+         var urlTitles = document.getElementsByClassName('urlTitles');
+        // urlTitles[addCnt].value = localStorage.urlValues;
+
+        addCnt++;
     });
 }
