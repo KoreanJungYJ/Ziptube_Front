@@ -49,3 +49,17 @@
 //         });
 //     })
 // })
+
+// chrome.storage.sync.get(function (data) {
+//     var userData = document.querySelector('input');
+//     userData.value = data.saveVal;
+// });
+
+// var addBtn = document.getElementById('addBtn');
+// addBtn.addEventListener('click', () => {
+//     var input = document.querySelector('input');
+//     var saveVal = input.value;
+//     chrome.storage.sync.set({
+//         'saveVal' : saveVal
+//     });
+// });
