@@ -20,9 +20,12 @@ exitBtn.addEventListener('click', () => {
     window.close();
 });
 
+var saveVals;
+
 /* data가져와서 설정하기 */
 chrome.storage.sync.get(function (data) {
-    
+    saveVals = (data.saveVals) ? JSON.parse(data.saveVals) : [];
+    console.log(saveVals);
 });
 
 /* 추가 했을 때 관련 모든 로직 */
@@ -33,34 +36,30 @@ addBtn.addEventListener('click', () => {
     document.getElementById('downloadPart').style.display = "block";
 
     //input 부분 표시하기
-    var addCnt = 0;
     var showPart = document.getElementById('urlCover');
-    var mainForm =
-    '<label><input type="checkbox" class="checkBoxes" id="check'+addCnt+'"><input type="url" class="urlTitles" id="sepUrl'+addCnt+'" value="" maxlength = "40"></label>';
+    var mainForm = `
+            <label>
+                <input type="checkbox" class="checkBoxes" id="check${saveVals.length}">
+                <input type="url" class="urlTitles" id="sepUrl${saveVals.length}" value="" maxlength = "40">
+            </label>'`;
        
     var addDiv = document.createElement('div');
-    addDiv.setAttribute("id", "keyForm" + addCnt);
+    addDiv.setAttribute("id", "keyForm" + saveVals.length);
     addDiv.innerHTML = mainForm;
     showPart.appendChild(addDiv);
-
+    
     //url 받아와서 저장하기
-    chrome.tabs.getSelected(null, function(tabs){
-        var userVal = document.getElementsByClassName('urlTitles');
+    chrome.tabs.getSelected(null, function(tabs) {
+        var userVals = document.getElementsByClassName('urlTitles');
         var pageUrl = tabs.url;
-        var saveVal, urlCnt;
+        
+        userVals[saveVals.length].value = pageUrl;
+        saveVals.push(pageUrl);
 
-        for(urlCnt = 0; urlCnt < userVal.length; urlCnt++){
-            userVal[urlCnt].value = pageUrl;
-            saveVal = userVal[urlCnt].value;
-            console.log(saveVal);
-
-            chrome.storage.sync.set({
-                'saveVal' : saveVal
-            });
-        }
+        chrome.storage.sync.set({
+            'saveVals' : JSON.stringify(saveVals)
+        });
     });
-
-    addCnt++;
 });
 
 
