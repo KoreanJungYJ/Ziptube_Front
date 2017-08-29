@@ -20,12 +20,21 @@ exitBtn.addEventListener('click', () => {
     window.close();
 });
 
-var saveVals;
+var saveVals; //pageUrl을 저장할 배열
 
 /* data가져와서 설정하기 */
 chrome.storage.sync.get(function (data) {
-    saveVals = (data.saveVals) ? JSON.parse(data.saveVals) : [];
+    console.log(data.saveVals);
+
+    if(saveVals == data.saveVals){
+        saveVals = JSON.parse(data.saveVals);
+        console.log("check If Part!");
+    }else{
+        saveVals = [];
+        console.log("check Else Part!");
+    }
     console.log(saveVals);
+
 });
 
 /* 추가 했을 때 관련 모든 로직 */
@@ -37,11 +46,11 @@ addBtn.addEventListener('click', () => {
 
     //input 부분 표시하기
     var showPart = document.getElementById('urlCover');
-    var mainForm = `
-            <label>
+    var mainForm = 
+            `<label>
                 <input type="checkbox" class="checkBoxes" id="check${saveVals.length}">
                 <input type="url" class="urlTitles" id="sepUrl${saveVals.length}" value="" maxlength = "40">
-            </label>'`;
+            </label>`;
        
     var addDiv = document.createElement('div');
     addDiv.setAttribute("id", "keyForm" + saveVals.length);
@@ -52,6 +61,7 @@ addBtn.addEventListener('click', () => {
     chrome.tabs.getSelected(null, function(tabs) {
         var userVals = document.getElementsByClassName('urlTitles');
         var pageUrl = tabs.url;
+        console.log(pageUrl);
         
         userVals[saveVals.length].value = pageUrl;
         saveVals.push(pageUrl);
