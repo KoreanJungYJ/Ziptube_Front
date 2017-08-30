@@ -5,8 +5,22 @@ exitBtn.addEventListener('click', () => {
     window.close();
 });
 
+/*-----------------------------------------------------------------------------------------------------*/
+
 //pageUrl을 저장할 배열
 var saveVals = []; 
+
+/* set에서 data가져와서 storage에 저장시켜주기 */
+chrome.storage.sync.get(function (data) {
+    saveVals = JSON.parse(data.saveVals);
+    console.log(saveVals);
+
+    if (saveVals && saveVals.length > 0) {
+        for(let idx = 0; idx < saveVals.length; idx++){
+            createForm(saveVals, idx);
+        }
+    }
+});
 
 //생성 함수
 function createForm(vals, idx){
@@ -50,7 +64,10 @@ addBtn.addEventListener('click', () => {
 });
 
 
-/* check가 true시 모두 삭제 */
+/*-----------------------------------------------------------------------------------------------------*/
+
+
+/* check가 true시 모두 해제 */
 function delChecks(checkClass, idx){
     for(let idx = 0; idx < checkClass.length; idx++){
         if(checkClass[idx].checked === true){
@@ -59,9 +76,9 @@ function delChecks(checkClass, idx){
     }
 }
 
-/* 삭제 했을 때 관련 모든 로직 */
-var delBtn = document.getElementById('delBtn');
-delBtn.addEventListener('click', () => {
+/* 취소 했을 때 로직 */
+var cancelBtn = document.getElementById('cancelBtn');
+cancelBtn.addEventListener('click', () => {
     let checkBoxes = document.getElementsByClassName('checkBoxes');
     let checkCnt;
 
@@ -69,17 +86,12 @@ delBtn.addEventListener('click', () => {
 });
 
 
-/* set에서 data가져와서 storage에 저장시켜주기 */
-chrome.storage.sync.get(function (data) {
-    saveVals = JSON.parse(data.saveVals);
-    console.log(saveVals);
+/*-----------------------------------------------------------------------------------------------------*/
 
-    if (saveVals && saveVals.length > 0) {
-        for(let idx = 0; idx < saveVals.length; idx++){
-            createForm(saveVals, idx);
-        }
-    }
-});
+/* 삭제 했을 때 모든 로직 */
+
+
+
 
 
 
