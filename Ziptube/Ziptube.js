@@ -1,18 +1,3 @@
-//storage get data example
-
-/*chrome.storage.sync.get(function (data) {
-    var userData = document.querySelector('input');
-    userData.value = data.saveVal;
-});
-
-var addBtn = document.getElementById('addBtn');
-addBtn.addEventListener('click', () => {
-    var input = document.querySelector('input');
-    var saveVal = input.value;
-    chrome.storage.sync.set({
-        'saveVal' : saveVal
-    });
-});*/
 
 /* x 이미지를 눌렀을 때 없애기 */
 var exitBtn = document.getElementById('exitImg');
@@ -20,48 +5,52 @@ exitBtn.addEventListener('click', () => {
     window.close();
 });
 
-var saveVals; //pageUrl을 저장할 배열
+//pageUrl을 저장할 배열
+var saveVals = []; 
 
-/* data가져와서 설정하기 */
+//생성 함수
+function createForm(vals, idx){
+
+    document.getElementById('downloadPart').style.display = "block";
+
+    let showPart = document.getElementById('urlCover');
+    let mainForm = 
+            `<label>
+                <input type="checkbox" class="checkBoxes" id="check${vals.length}">
+                <input type="url" class="urlTitles" id="sepUrl${vals.length}" value="${vals[idx]}" maxlength = "40">
+            </label>`;
+       
+    let addDiv = document.createElement('div');
+    addDiv.setAttribute("id", "keyForm" + vals.length);
+    addDiv.innerHTML = mainForm;
+    showPart.appendChild(addDiv);
+}
+
+/* set에서 data가져와서 storage에 저장시켜주기 */
 chrome.storage.sync.get(function (data) {
-    console.log(data.saveVals);
-
-    if(saveVals == data.saveVals){
-        saveVals = JSON.parse(data.saveVals);
-        console.log("check If Part!");
-    }else{
-        saveVals = [];
-        console.log("check Else Part!");
-    }
+    saveVals = JSON.parse(data.saveVals);
     console.log(saveVals);
 
+    if (saveVals && saveVals.length > 0) {
+        for(let idx = 0; idx < saveVals.length; idx++){
+            createForm(saveVals, idx);
+        }
+    }
 });
+
 
 /* 추가 했을 때 관련 모든 로직 */
 var addBtn = document.getElementById('addBtn');
 addBtn.addEventListener('click', () => {
 
-    //다운로드 버튼 표시하기
-    document.getElementById('downloadPart').style.display = "block";
-
-    //input 부분 표시하기
-    var showPart = document.getElementById('urlCover');
-    var mainForm = 
-            `<label>
-                <input type="checkbox" class="checkBoxes" id="check${saveVals.length}">
-                <input type="url" class="urlTitles" id="sepUrl${saveVals.length}" value="" maxlength = "40">
-            </label>`;
-       
-    var addDiv = document.createElement('div');
-    addDiv.setAttribute("id", "keyForm" + saveVals.length);
-    addDiv.innerHTML = mainForm;
-    showPart.appendChild(addDiv);
+    // label 생성 및 버튼 보이게 하기
+    createForm(saveVals, null);
     
-    //url 받아와서 저장하기
+    //url 받아와서 JSON으로 보내주기
     chrome.tabs.getSelected(null, function(tabs) {
         var userVals = document.getElementsByClassName('urlTitles');
+
         var pageUrl = tabs.url;
-        console.log(pageUrl);
         
         userVals[saveVals.length].value = pageUrl;
         saveVals.push(pageUrl);
@@ -71,6 +60,9 @@ addBtn.addEventListener('click', () => {
         });
     });
 });
+
+/* 삭제 했을 때 관련 모든 로직 */
+
 
 
 
