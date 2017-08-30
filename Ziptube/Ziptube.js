@@ -1,6 +1,6 @@
 
 /* x 이미지를 눌렀을 때 없애기 */
-var exitBtn = document.getElementById('exitImg');
+let exitBtn = document.getElementById('exitImg');
 exitBtn.addEventListener('click', () => {
     window.close();
 });
@@ -26,6 +26,49 @@ function createForm(vals, idx){
     showPart.appendChild(addDiv);
 }
 
+
+/* 추가 했을 때 관련 모든 로직 */
+var addBtn = document.getElementById('addBtn');
+addBtn.addEventListener('click', () => {
+
+    // label 생성 및 버튼 보이게 하기
+    createForm(saveVals, null);
+    
+    //url 받아와서 JSON으로 보내주기
+    chrome.tabs.getSelected(null, function(tabs) {
+        let userVals = document.getElementsByClassName('urlTitles');
+
+        let pageUrl = tabs.url;
+        
+        userVals[saveVals.length].value = pageUrl;
+        saveVals.push(pageUrl);
+
+        chrome.storage.sync.set({
+            'saveVals' : JSON.stringify(saveVals)
+        });
+    });
+});
+
+
+/* check가 true시 모두 삭제 */
+function delChecks(checkClass, idx){
+    for(let idx = 0; idx < checkClass.length; idx++){
+        if(checkClass[idx].checked === true){
+            checkClass[idx].checked = false;
+        }
+    }
+}
+
+/* 삭제 했을 때 관련 모든 로직 */
+var delBtn = document.getElementById('delBtn');
+delBtn.addEventListener('click', () => {
+    let checkBoxes = document.getElementsByClassName('checkBoxes');
+    let checkCnt;
+
+    delChecks(checkBoxes, checkCnt);
+});
+
+
 /* set에서 data가져와서 storage에 저장시켜주기 */
 chrome.storage.sync.get(function (data) {
     saveVals = JSON.parse(data.saveVals);
@@ -39,29 +82,6 @@ chrome.storage.sync.get(function (data) {
 });
 
 
-/* 추가 했을 때 관련 모든 로직 */
-var addBtn = document.getElementById('addBtn');
-addBtn.addEventListener('click', () => {
-
-    // label 생성 및 버튼 보이게 하기
-    createForm(saveVals, null);
-    
-    //url 받아와서 JSON으로 보내주기
-    chrome.tabs.getSelected(null, function(tabs) {
-        var userVals = document.getElementsByClassName('urlTitles');
-
-        var pageUrl = tabs.url;
-        
-        userVals[saveVals.length].value = pageUrl;
-        saveVals.push(pageUrl);
-
-        chrome.storage.sync.set({
-            'saveVals' : JSON.stringify(saveVals)
-        });
-    });
-});
-
-/* 삭제 했을 때 관련 모든 로직 */
 
 
 
