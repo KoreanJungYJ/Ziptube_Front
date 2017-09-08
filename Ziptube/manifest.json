@@ -12,6 +12,7 @@
     "permissions" : [
         "activeTab",
         "<all_urls>",
+        //"https://www.youtube.com/*",
         "tabs",
         "storage"
     ]
