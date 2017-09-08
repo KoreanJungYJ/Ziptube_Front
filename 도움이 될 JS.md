@@ -40,3 +40,10 @@ removeClass는 적용된 class를 지우는 역할을 한다.
     .splice(pos, n) : 배열 인덱스 위치에 있는 항목 제거하기
     
     .slice(시작지점, 끝지점) : 배열에서 저 사이 값들을 추출한다. 배열 복사 개념
+
+
+
+3. Array 2
+
+    - Class를 이용할 때에는 for문이 아닌 Array(index).from.forEach(elem, index) => {}); 이런식으로 구문을 이용한다.
+    - checkbox클릭이나 input type들을 제어하기 편리할 것 같다.
