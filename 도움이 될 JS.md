@@ -47,3 +47,8 @@ removeClass는 적용된 class를 지우는 역할을 한다.
 
     - Class를 이용할 때에는 for문이 아닌 Array(index).from.forEach(elem, index) => {}); 이런식으로 구문을 이용한다.
     - checkbox클릭이나 input type들을 제어하기 편리할 것 같다.
+    
+    
+    
+4. table
+    - Label -> Table     : easier to remove each data!
