@@ -1,1 +1,115 @@
-<!---->
+<html>
+    <head>
+        <title>Ziptube</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="이동현, 정윤재">
+        <meta name="title" content="Ziptube">
+        <meta name="description" content="유튜브의 영상들을 모아서 한 번에 다운로드 할 수 있는 프로그램">
+        <meta name="keywords" content="유튜브, 노래, 영상, 다운로드, 압축">
+        <meta name="Other Agent" content="정윤재">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta property="og:type" content="Chrome Extension Program">
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
+        <style media="screen" type="text/css">
+            @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+            body{
+                width:21.25rem;
+                height:28.12rem;
+                margin:0 auto;
+            }
+
+            *{
+                box-sizing:border-box;
+                margin:0;
+                padding:0;
+                border:0;
+                outline:none;
+                font-family: 'NanumSquare', sans-serif;
+                text-align: center;
+            }
+
+            #mainPart{
+                width:100%;
+                height:12.5rem;
+                background: linear-gradient(to right bottom, #0acffe, #406aff);
+            }
+
+            #mainPart #logo{
+                width:5rem;
+                display:block;
+                top:1.3rem;
+                margin:0 auto;
+                position:relative;
+            }
+            
+            #mainPart #exitImg{
+                position:absolute;
+                right:1.2rem;
+                top:1.25rem;
+                cursor: pointer;
+            }
+
+            #mainPart h1{
+                color:white;
+                font-size:1.7rem;
+                margin-top:3.7rem;
+                letter-spacing: 0.5px;
+            }
+
+            #mainPart .btns{
+                width:6.1rem;
+                height:2.1rem;
+                display:inline-block;
+                border:1px solid white;
+                border-radius: 50px;
+                margin:2.5px;
+                margin-top:2.8rem;
+                cursor:pointer;
+
+                color:white;
+                padding-top:9px;
+                padding-left:6.5px;
+                font-weight:600;
+                letter-spacing:7px;
+
+                transition:0.5s;
+            }
+
+            #mainPart .btns:hover{
+                background-color:white;
+                color: #406aff;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "mainPart">
+            <img src="./designs/RESOURCE/ic_ziptube.png" alt = "logo" id= "logo">
+            <img src="./designs/RESOURCE/ic_clear.png" alt = "cancel" id = "exitImg">
+            <h1>환영합니다!</h1>
+
+            <div id="btnCover">
+                <div class="btns" id = "addBtn">
+                    추가
+                </div>
+                <div class="btns" id = "delBtn">
+                    삭제
+                </div>
+                <div class="btns" id = "cancelBtn">
+                    취소
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="./js/addLogic.js">
+        </script>
+        <script type="text/javascript" src="./js/delLogic.js">
+        </script>
+        <script type="text/javascript" src="./js/cancelLogic.js">
+        </script>
+        <script type="text/javascript" src="./js/etcLogic.js">
+        </script>
+    </body>
+</html>

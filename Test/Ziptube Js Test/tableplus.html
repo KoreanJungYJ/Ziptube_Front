@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <style>
+            td{
+                border:1px solid gray;
+            }
+            #btn{
+                width:20px;
+                height:20px;
+                cursor:pointer;
+                background-color:gray;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="checkbox" id = "check">
+        <div id="btn"></div>
+        <table id = "ham">
+            <td id = "hamtory">안녕</td>
+        </table>
+        
+        <script type="text/javascript">
+            let btn = document.getElementById('btn');
+            btn.addEventListener('click', () => {
+                let box = document.querySelector('input');
+                let tabl = document.getElementById('hamtory');
+
+                if(box.checked == true){
+                    tabl.removeChild(tabl.firstChild);
+                }
+            });
+        </script>
+    </body>
+</html>
