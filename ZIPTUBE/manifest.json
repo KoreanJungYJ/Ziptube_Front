@@ -1,0 +1,18 @@
+{
+    "manifest_version" : 2,
+    
+    "name" : "Ziptube",
+    "version" : "1.0",
+    "description" : "Youtube Files Downloader Program",
+    "browser_action" : {
+        "default_icon" : "./designs/RESOURCE/logo.png",
+        "default_popup" : "Ziptube.html"
+    },
+    
+    "permissions" : [
+        "activeTab",
+        "https://www.youtube.com/*",
+        "tabs",
+        "storage"
+    ]
+}
