@@ -4,8 +4,15 @@ addBtn.addEventListener('click', () => {
 });
 
 function addLogic(){
-    function init(){
+    function addResult(){
+        init();
+        createTable();
+        showDownload();
+        setValue();
+    }
 
+    function init(){
+        
     }
 
     function createTable(){
@@ -17,6 +24,8 @@ function addLogic(){
     }
 
     function setValue(){
-        
+
     }
+
+    addResult();
 }
