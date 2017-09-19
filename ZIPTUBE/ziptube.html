@@ -82,6 +82,56 @@
                 background-color:white;
                 color: #406aff;
             }
+
+            /* 구역 */
+
+            #urlCover{
+                width:100%;
+                height:13.2rem;
+            }
+
+            /* 구역 */
+            #downloadPart{
+                width:100%;
+                height:3.3rem;
+                position:absolute;
+                bottom:0;
+                background: linear-gradient(to right, #0acffe, #406aff);
+
+                /* 디폴트는 none */
+                display: none;
+            }
+
+            /* 추가 눌렀을 때의 버튼 */
+            #download{
+                width:6.5rem;
+                height:2.1rem;
+                border:1px solid white;
+                border-radius: 50px;
+                display: table;
+                margin:0 auto;
+                margin-top:10px;
+                cursor: pointer;
+                transition:0.5s;
+            }
+
+            #download:hover{
+                background-color:white;
+            }
+
+            #download:hover #downloadText{
+                color:#406aff !important;
+            }
+
+            #download #downloadText{
+                color:white;
+                display:table-cell;
+                vertical-align: middle;
+                font-weight:bold;
+                letter-spacing: 0.5px;
+            }
+
+            /* 삭제 눌렀을 때의 버튼 */
         </style>
     </head>
     <body>
@@ -90,6 +140,7 @@
             <img src="./designs/RESOURCE/ic_clear.png" alt = "cancel" id = "exitImg">
             <h1>환영합니다!</h1>
 
+            <!-- 추가, 삭제, 취소 등의 버튼이 있는 곳 -->
             <div id="btnCover">
                 <div class="btns" id = "addBtn">
                     추가
@@ -99,6 +150,34 @@
                 </div>
                 <div class="btns" id = "cancelBtn">
                     취소
+                </div>
+            </div>
+
+            <!-- 실제로 뜨는 곳 -->
+            <div id = "urlCover">
+
+            </div>
+
+            <!-- 다운로드 부분이 뜨는 곳 -->
+            <div id = "downloadPart">
+                <!-- 다운로드 눌렀을 때, 삭제 눌렀을 때의 폼을 모두 고려 
+                     display를 변경시키거나 visibility를 변경하자. -->
+                <div id = "download">
+                    <div id = "downloadText">
+                        다운로드
+                    </div>
+                </div>
+
+                <div id = "delete">
+                    <div class = "deletes" id = "selectDel">
+
+                    </div>
+                    <div class = "deletes" id = "allDel">
+
+                    </div>
+                    <div class = "deletes" id = "clickDel">
+
+                    </div>
                 </div>
             </div>
         </div>

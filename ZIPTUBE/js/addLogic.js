@@ -12,7 +12,7 @@ function addLogic(){
     }
 
     function init(){
-        
+        let downloadPart = document.getElementById('downloadPart');
     }
 
     function createTable(){
@@ -20,7 +20,7 @@ function addLogic(){
     }
 
     function showDownload(){
-
+        downloadPart.style.display = "block";
     }
 
     function setValue(){
