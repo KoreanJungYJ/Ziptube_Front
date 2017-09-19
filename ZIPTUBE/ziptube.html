@@ -19,6 +19,7 @@
                 width:21.25rem;
                 height:28.12rem;
                 margin:0 auto;
+          
             }
 
             *{
@@ -87,7 +88,16 @@
 
             #urlCover{
                 width:100%;
-                height:13.2rem;
+                height:12.35rem;
+                margin-top:0.8rem;
+                overflow:hidden;
+            }
+
+            /* scroll 없애는 용도 */
+            #urlCover #urlPart{
+                width:120%;
+                height:100%;
+                overflow:auto;
             }
 
             /* 구역 */
@@ -155,7 +165,9 @@
 
             <!-- 실제로 뜨는 곳 -->
             <div id = "urlCover">
-
+                <div id = "urlPart">
+                    
+                </div>
             </div>
 
             <!-- 다운로드 부분이 뜨는 곳 -->
