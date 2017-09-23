@@ -20,7 +20,8 @@ function addLogic(){
         let checkBoxCell = row.insertCell(0); //td
         let inputCell = row.insertCell(1); //td
 
-        checkBoxCell.innerHTML = "테스트 항목";
+        checkBoxCell.innerHTML 
+                = `<input type = "checkbox">`;
         inputCell.innerHTML = new Date().toUTCString();
     }
 
