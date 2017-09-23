@@ -1,22 +1,27 @@
+/*-------------------*/
 let addBtn = document.getElementById('addBtn');
+let table = document.querySelector('table');
+
 addBtn.addEventListener('click', () => {
     addLogic();
 });
 
 function addLogic(){
+    let downloadPart = document.getElementById('downloadPart');
+
     function addResult(){
-        init();
         createTable();
         showDownload();
         setValue();
     }
 
-    function init(){
-        let downloadPart = document.getElementById('downloadPart');
-    }
-
     function createTable(){
+        let row = table.insertRow(table.length); //tr
+        let checkBoxCell = row.insertCell(0); //td
+        let inputCell = row.insertCell(1); //td
 
+        checkBoxCell.innerHTML = "테스트 항목";
+        inputCell.innerHTML = new Date().toUTCString();
     }
 
     function showDownload(){
