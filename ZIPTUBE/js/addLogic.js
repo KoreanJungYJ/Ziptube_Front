@@ -22,7 +22,7 @@ function addLogic(){
 
         checkBoxCell.innerHTML 
                 = `<input type = "checkbox">`;
-        inputCell.innerHTML = new Date().toUTCString();
+        inputCell.innerHTML = `<input type = "text">`;
     }
 
     function showDownload(){
