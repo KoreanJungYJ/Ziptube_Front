@@ -7,7 +7,6 @@ addBtn.addEventListener('click', () => {
 });
 
 function addLogic(){
-    let downloadPart = document.getElementById('downloadPart');
 
     function addResult(){
         createTable();
@@ -15,23 +14,26 @@ function addLogic(){
         setValue();
     }
 
-    function createTable(){
-        let row = table.insertRow(table.length); //tr
-        let checkBoxCell = row.insertCell(0); //td
-        let inputCell = row.insertCell(1); //td
-
-        checkBoxCell.innerHTML 
-                = `<input type = "checkbox">`;
-        inputCell.innerHTML = `<input type = "text">`;
-    }
-
-    function showDownload(){
-        downloadPart.style.display = "block";
-    }
-
-    function setValue(){
-
-    }
-
     addResult();
+}
+
+function createTable(){
+    let row = table.insertRow(table.length); //tr
+    let checkBoxCell = row.insertCell(0); //td
+    let inputCell = row.insertCell(1); //td
+
+    checkBoxCell.innerHTML 
+            = `<input type = "checkbox" class = "checkBoxes">`;
+    inputCell.innerHTML = `<input type = "text" class = "youtubeUrls">`;
+}
+
+
+function showDownload(){
+    let downloadPart = document.getElementById('downloadPart');
+    downloadPart.style.display = "block";
+}
+
+
+function setValue(){
+
 }
