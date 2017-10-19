@@ -2,6 +2,15 @@ let addBtn = document.getElementById('addBtn');
 let table = document.querySelector('table');
 let saveVals = new Array();
 
+
+//저장된 값을 불러올 storage
+chrome.storage.sync.get((getData) => {
+    let data = JSON.parse(getData.pageData);
+    console.log("-Parsed Data-");
+    console.log(data);
+});
+
+
 addBtn.addEventListener('click', () => {
     addLogic();
 });
@@ -28,13 +37,8 @@ function createTable(){
     //추가되는 input 값들
         checkBoxCell.innerHTML 
                 = `<input type = "checkbox" class = "checkBoxes">`;
-        
-        //chrome set으로 불러온 데이터 저장
-        chrome.storage.sync.get((getData) => {
-            let pageData = JSON.parse(getData.pageData);
-            inputCell.innerHTML 
-                = `<input type = "text" class = "youtubeUrls" value = "${pageData[index]}">`;    
-        });
+        inputCell.innerHTML 
+                = `<input type = "text" class = "youtubeUrls" value = '${saveVals[index]}'>`;
 
     //클릭 시 배경색 변경
     function checkBoxColor(){
@@ -62,9 +66,16 @@ function showDownload(){
 
 //페이지 URL 불러오기
 function setValue(){
-    chrome.tabs.getSelected(null, function(tab) {
+    chrome.tabs.query({'active': true, 
+                       'windowId': chrome.windows.WINDOW_ID_CURRENT}, function(tabs){
         let boxUrls = document.getElementsByClassName('youtubeUrls');
-        let pageUrl = tab.url;
+        let pageUrl = tabs[0].url;
+        
+        //id Test
+        tabs.forEach(function(tab) {
+            console.log('Tab ID : ' + tab.id);
+        });
+        //
 
         boxUrls[saveVals.length].value = pageUrl;
         saveVals.push(pageUrl);
