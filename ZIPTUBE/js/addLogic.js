@@ -44,9 +44,8 @@ function createTable(){
             let elem = Array.from(checks)[index];
 
             elem.addEventListener('click', () => {
-                row.style.backgroundColor 
-                    = row.style.backgroundColor !== "#F2F2F2" ? "#F2F2F2" : "transparent";
-
+                row.style.backgroundColor = elem.checked ? "#F2F2F2" : "transparent";
+                console.log("체크: " +elem.checked);
                 console.log("Clicked CheckBox Index: " + index);
             });
         }
