@@ -10,6 +10,11 @@
         "default_title" : "Ziptube"
     },
     
+    "background" : {
+        "scripts" : ["background.js"],
+        "persistent" : false
+    },
+
     "permissions" : [
         "activeTab",
         "https://www.youtube.com/*",
