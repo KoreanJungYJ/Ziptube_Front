@@ -4,13 +4,26 @@ let saveVals = new Array();
 
 
 //저장된 값을 불러올 storage
-chrome.storage.sync.get((getData) => {
+/*chrome.storage.sync.get((getData) => {
     let data = JSON.parse(getData.pageData);
     console.log("-Parsed Data-");
     console.log(data);
+});*/
+
+chrome.storage.sync.get((getData) => {
+    saveVals = JSON.parse(getData.pageData);
+    console.log("-추가 부분 배열-");
+    console.log(saveVals);
+
+    if(saveVals && saveVals.length > 0){
+        showDownload();
+        for(let idx = 0; idx < saveVals.length; idx++){
+            createTable();
+        }
+    }
 });
 
-
+//클릭 시 이벤트
 addBtn.addEventListener('click', () => {
     addLogic();
 });
@@ -91,4 +104,5 @@ function setValue(){
         });
     });
 }
+
 
