@@ -1,18 +1,11 @@
-let addBtn = document.getElementById('addBtn');
+const addBtn = document.getElementById('addBtn');
 let table = document.querySelector('table');
 let saveVals = new Array();
 
 
-//저장된 값을 불러올 storage
-/*chrome.storage.sync.get((getData) => {
-    let data = JSON.parse(getData.pageData);
-    console.log("-Parsed Data-");
-    console.log(data);
-});*/
-
 chrome.storage.sync.get((getData) => {
     saveVals = JSON.parse(getData.pageData);
-    console.log("-추가 부분 배열-");
+    console.log("-추가 시 배열-");
     console.log(saveVals);
 
     if(saveVals && saveVals.length > 0){
@@ -48,10 +41,10 @@ function createTable(){
     let inputCell = row.insertCell(1); //tr에 td 추가
 
     //추가되는 input 값들
-        checkBoxCell.innerHTML 
-                = `<input type = "checkbox" class = "checkBoxes">`;
-        inputCell.innerHTML 
-                = `<input type = "text" class = "youtubeUrls" value = '${saveVals[index]}'>`;
+    checkBoxCell.innerHTML 
+        = `<input type = "checkbox" class = "checkBoxes">`;
+    inputCell.innerHTML 
+        = `<input type = "text" class = "youtubeUrls" value = '${saveVals[index]}'>`;
 
     //클릭 시 배경색 변경
     function checkBoxColor(){
@@ -99,7 +92,7 @@ function setValue(){
             //페이지 URL를 saveVals 배열에 보내기
             'pageData' : JSON.stringify(saveVals)
 
-        }, function() {
+        }, () => {
             console.log("Clicked Datas are being saved");
         });
     });
