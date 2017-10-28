@@ -2,10 +2,9 @@ const addBtn = document.getElementById('addBtn');
 let table = document.querySelector('table');
 let saveVals = new Array();
 
-
 chrome.storage.sync.get((getData) => {
     saveVals = JSON.parse(getData.pageData);
-    console.log("-추가 시 배열-");
+    console.log("- 추가 후 저장된 배열 -");
     console.log(saveVals);
 
     if(saveVals && saveVals.length > 0){
@@ -55,7 +54,7 @@ function createTable(){
 
             elem.addEventListener('click', () => {
                 row.style.backgroundColor = elem.checked ? "#F2F2F2" : "transparent";
-                console.log("체크: " +elem.checked);
+                console.log("체크: " + elem.checked);
                 console.log("Clicked CheckBox Index: " + index);
             });
         }
