@@ -176,6 +176,33 @@
                 right:4rem;
                 background-color:transparent;
             }
+
+            /* 삭제 눌렀을 때 */
+            #delete{
+                display:none;
+            }
+
+            #delete .deletes{
+                width:6.5rem;
+                height:2.1rem;
+                border:1px solid white;
+                border-radius: 50px;
+                display: inline-block;
+                margin:0 auto;
+                margin:10px;
+                cursor: pointer;
+                transition:0.5s;
+
+                color:white;
+                padding-top:0.6rem;
+                font-weight:bold;
+                letter-spacing: 0.5px;
+            }
+
+            #delete .deletes:hover{
+                background-color:white;
+                color:#406aff;
+            }
         </style>
     </head>
     <body>
@@ -217,14 +244,11 @@
                 </div>
 
                 <div id = "delete">
-                    <div class = "deletes" id = "selectDel">
-
-                    </div>
                     <div class = "deletes" id = "allDel">
-
+                        전체선택
                     </div>
                     <div class = "deletes" id = "clickDel">
-
+                        삭제하기
                     </div>
                 </div>
             </div>

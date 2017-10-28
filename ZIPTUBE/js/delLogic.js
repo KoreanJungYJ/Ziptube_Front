@@ -2,10 +2,21 @@ const delBtn = document.getElementById('delBtn');
 
 //여기서 다시 get을 해보자
 chrome.storage.sync.get((savedData) => {
-    saveVals = JSON.parse(savedData.leftData);
-    console.log("- 삭제 후 남은 데이터 -");
-    console.log(saveVals);
+    saveVals = JSON.parse(savedData.pageData);
+    if(saveVals && saveVals.length > 0){
+        delBtn.addEventListener('click', () => {
+            showDelForm();
+        });
+    }
 });
+
+function showDelForm(){
+    let downloadBtn = document.getElementById('download');
+    let deletePart = document.getElementById('delete');
+
+    downloadBtn.style.display = "none";
+    deletePart.style.display = "block";
+}
 
 
 delBtn.addEventListener('click', () => {
@@ -13,11 +24,31 @@ delBtn.addEventListener('click', () => {
     let table = document.querySelector('table');
     // tab.deleteRow(tab.rows.length-1);
 
-    delTable(checks.length, checks, table);
-    
+    delClickEvent();
 });
 
 /* checkbox true인 table 삭제 */
+function delClickEvent(){
+    let delClicks = document.getElementsByClassName('deletes');
+    Array.from(delClicks).forEach((elem, index) => {
+        console.log(elem + "-" + index);
+        elem.addEventListener('click', () => {
+            if(index == 0){
+                delAll();
+            }else{
+                delTable(checks.length, checks, table);
+            }
+        });
+    }); 
+}
+
+function delAll(){
+    for(let i = 0; i < saveVals.length; i++){
+        checks[i].checked = true;
+        rows[i].style.backgroundColor = "transparent";
+    }
+}
+
 function delTable(checkLeng, checkBox, table){
     for(let idx = checkLeng-1; idx >= 0; idx--){
         if(checkBox[idx].checked === true){
