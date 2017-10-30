@@ -2,6 +2,15 @@ const addBtn = document.getElementById('addBtn');
 let table = document.querySelector('table');
 let saveVals = new Array();
 
+/*
+유튜브 URL 테스트
+
+let test = "https://www.youtube.com/watch?v=jHFVmsW9J5o";
+let test2 = "https://www.naver.com";
+let test3 = "https://www.youtube.com/watch?v=kaMWDfbPjp0";
+let test4 = "https://www.youtube.com/watch?v=vGxVIWJbHLg";
+*/
+
 chrome.storage.sync.get((getData) => {
     saveVals = JSON.parse(getData.pageData);
     console.log("- 추가 후 저장된 배열 -");
@@ -80,26 +89,45 @@ function setValue(){
                        'windowId': chrome.windows.WINDOW_ID_CURRENT}, function(tabs){
         let boxUrls = document.getElementsByClassName('youtubeUrls');
         let pageUrl = tabs[0].url;
-        
-        //id Test
-        tabs.forEach(function(tab) {
-            console.log('Tab ID : ' + tab.id);
-        });
-        //
+        let youtubeUrl = "";
 
-        boxUrls[saveVals.length].value = pageUrl;
-        saveVals.push(pageUrl);
-        console.log(saveVals.length);
+        youtubeUrl = convertId(pageUrl);
+        console.log(youtubeUrl);
 
-        //데이터 설정하기
-        chrome.storage.sync.set({
+        if(youtubeUrl != "ErrorUrl"){
+            boxUrls[saveVals.length].value = youtubeUrl;
+            saveVals.push(youtubeUrl);
+            console.log(saveVals.length);
+
+            chrome.storage.sync.set({
             //페이지 URL를 saveVals 배열에 보내기
             'pageData' : JSON.stringify(saveVals)
 
-        }, () => {
-            console.log("Clicked Datas are being saved");
-        });
+            }, () => {
+                console.log("Clicked Datas are being saved");
+            });
+        }else{
+            alert("유튜브 URL만 받아와주세요!");
+        }
     });
 }
+
+function convertId(url){
+    let basicUrl = "https://youtu.be/";
+    let setUrl = "";
+
+    if(url){
+        let regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+        let matches = url.match(regExp);
+        if(matches){
+            setUrl += matches[7];
+            return basicUrl.concat(setUrl);
+        }else{
+            setUrl = "ErrorUrl";
+            return setUrl;
+        }
+    }
+}
+
 
 
