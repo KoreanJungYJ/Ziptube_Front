@@ -66,7 +66,12 @@ function createTable(){
 //클릭 시 다운로드 버튼 보여주기
 function showDownload(){
     let downloadPart = document.getElementById('downloadPart');
+    let deletePart = document.getElementById('delete');
+    let download = document.getElementById('download');
+
+    deletePart.style.display = "none";
     downloadPart.style.display = "block";
+    download.style.display = "table";
 }
 
 //페이지 URL 불러오기

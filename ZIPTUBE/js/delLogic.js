@@ -3,11 +3,6 @@ const delBtn = document.getElementById('delBtn');
 //여기서 다시 get을 해보자
 chrome.storage.sync.get((savedData) => {
     saveVals = JSON.parse(savedData.pageData);
-    if(saveVals && saveVals.length > 0){
-        delBtn.addEventListener('click', () => {
-            showDelForm();
-        });
-    }
 });
 
 function showDelForm(){
@@ -20,32 +15,34 @@ function showDelForm(){
 
 
 delBtn.addEventListener('click', () => {
-    let checks = document.getElementsByClassName('checkBoxes');
-    let table = document.querySelector('table');
-    // tab.deleteRow(tab.rows.length-1);
-
     delClickEvent();
+    showDelForm();
 });
 
 /* checkbox true인 table 삭제 */
 function delClickEvent(){
     let delClicks = document.getElementsByClassName('deletes');
+    let checks = document.getElementsByClassName('checkBoxes');
+
+    let table = document.querySelector('table');
+    let rows = table.querySelectorAll('tbody > tr');
+    let rowIndex = rows.length;
+
     Array.from(delClicks).forEach((elem, index) => {
-        console.log(elem + "-" + index);
         elem.addEventListener('click', () => {
             if(index == 0){
-                delAll();
+                delAll(checks, rows);
             }else{
                 delTable(checks.length, checks, table);
             }
         });
-    }); 
+    });
 }
 
-function delAll(){
+function delAll(checks, rows){
     for(let i = 0; i < saveVals.length; i++){
         checks[i].checked = true;
-        rows[i].style.backgroundColor = "transparent";
+        rows[i].style.backgroundColor = "#F2F2F2";
     }
 }
 
@@ -65,14 +62,5 @@ function delTable(checkLeng, checkBox, table){
             console.log("Unselected : " + idx);
         }
     }
-
-    function setDeletedTable(){
-        let rows = table.querySelectorAll('tbody > tr');
-        let rowIndex = rows.length;
-
-        console.log("Leaving Index : " +  rowIndex);
-    }
-
-    setDeletedTable();
 }
 
