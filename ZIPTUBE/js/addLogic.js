@@ -107,7 +107,8 @@ function setValue(){
                 console.log("Clicked Datas are being saved");
             });
         }else{
-            alert("유튜브 URL만 받아와주세요!");
+            alert("유튜브 영상만 가능합니다!");
+            window.close();
         }
     });
 }
@@ -117,7 +118,7 @@ function convertId(url){
     let setUrl = "";
 
     if(url){
-        let regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
         let matches = url.match(regExp);
         if(matches){
             setUrl += matches[7];

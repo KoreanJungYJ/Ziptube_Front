@@ -38,7 +38,7 @@
                 background: linear-gradient(to right bottom, #0acffe, #406aff);
             }
 
-            #mainPart #logo{
+            .logo{
                 width:5rem;
                 display:block;
                 top:1.3rem;
@@ -46,14 +46,14 @@
                 position:relative;
             }
             
-            #mainPart #exitImg{
+            #mainPart .exitImg{
                 position:absolute;
                 right:1.2rem;
                 top:1.25rem;
                 cursor: pointer;
             }
 
-            #mainPart h1{
+            h1{
                 color:white;
                 font-size:1.7rem;
                 margin-top:3.7rem;
@@ -203,12 +203,54 @@
                 background-color:white;
                 color:#406aff;
             }
+
+            /* 클릭 시 폼 */
+            #clickForm{
+                width:100%;
+                height:100%;
+                position:absolute;
+                z-index:9999;
+                background: linear-gradient(to right, #0acffe, #406aff);
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+
+                display: none;
+            }
+
+            #clickForm .formBtns{
+                width:9rem;
+                height:2.2rem;
+                display:inline-block;
+                border:1.5px solid white;
+                vertical-align: top;
+                border-radius: 50px;
+                margin:5px;
+                margin-top:16rem;
+                cursor:pointer;
+            }
+
+            #clickForm .formBtns:hover{
+                background-color:white;
+            }
+
+            #clickForm .formBtns:hover .formBtnTexts{
+                color:#406aff !important;
+            }
+            
+            #clickForm .formBtns .formBtnTexts{
+                color:white;
+                font-size:0.85rem;
+                text-align: center;
+                padding-top:0.6rem;
+            }
         </style>
     </head>
     <body>
         <div id = "mainPart">
-            <img src="./designs/RESOURCE/ic_ziptube.png" alt = "logo" id= "logo">
-            <img src="./designs/RESOURCE/ic_clear.png" alt = "cancel" id = "exitImg">
+            <img src="./designs/RESOURCE/ic_ziptube.png" alt = "logo" class= "logo">
+            <img src="./designs/RESOURCE/ic_clear.png" alt = "cancel" class = "exitImg">
             <h1>환영합니다!</h1>
 
             <!-- 추가, 삭제, 취소 등의 버튼이 있는 곳 -->
@@ -252,7 +294,26 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 다운로드 버튼 클릭 시 뜨는 폼 -->
+            <div id = "clickForm">
+                <img src="./designs/RESOURCE/ic_ziptube.png" alt = "logo" class= "logo">
+                <img src="./designs/RESOURCE/ic_clear.png" alt = "cancel" class = "exitImg">
+                <h1>파일 형식 선택</h1>
+
+                <div class = "formBtns" id = "mp3Btn">
+                    <div class = "formBtnTexts">
+                        MP3
+                    </div>
+                </div>
+                <div class = "formBtns" id = "mp4Btn">
+                    <div class = "formBtnTexts">
+                        MP4
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         <script type="text/javascript" src="./js/addLogic.js">
         </script>
@@ -261,6 +322,8 @@
         <script type="text/javascript" src="./js/cancelLogic.js">
         </script>
         <script type="text/javascript" src="./js/etcLogic.js">
+        </script>
+        <script type="text/javascript" src="./js/download.js">
         </script>
     </body>
 </html>

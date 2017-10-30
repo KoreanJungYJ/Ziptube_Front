@@ -1,4 +1,4 @@
-let exitBtn = document.getElementById('exitImg');
-exitBtn.addEventListener('click', () => {
+let exitBtn = document.getElementsByClassName('exitImg');
+exitBtn[0].addEventListener('click', () => {
     window.close();
 });
