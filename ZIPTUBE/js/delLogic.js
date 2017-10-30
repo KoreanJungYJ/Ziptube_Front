@@ -40,7 +40,7 @@ function delClickEvent(){
 }
 
 function delAll(checks, rows){
-    for(let i = 0; i < saveVals.length; i++){
+    for(let i in saveVals){
         checks[i].checked = true;
         rows[i].style.backgroundColor = "#F2F2F2";
     }
