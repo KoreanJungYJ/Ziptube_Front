@@ -11,6 +11,7 @@ let test3 = "https://www.youtube.com/watch?v=kaMWDfbPjp0";
 let test4 = "https://www.youtube.com/watch?v=vGxVIWJbHLg";
 */
 
+
 chrome.storage.sync.get((getData) => {
     saveVals = JSON.parse(getData.pageData);
     console.log("- 추가 후 저장된 배열 -");
@@ -129,6 +130,25 @@ function convertId(url){
         }
     }
 }
+
+/*function createHttpRequest5(url, callback){
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = (e) => {
+        if(xhr.readyState === 4){
+            if(xhr.status === 200){
+                callback(true);
+            }else{
+                callback(false);
+            }
+        }
+    };
+
+    xhr.open('POST', '/zip', true);
+    // url = Array , type = String [mp3,mp4] 
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(value);
+}*/
 
 
 

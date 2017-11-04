@@ -9,3 +9,8 @@ exit[1].addEventListener('click', () => {
 downloadBtn.addEventListener('click', () => {
     clickForm.style.display = "block";
 });
+
+/* Axios 통신 */
+
+const mp3Btn = document.getElementById('mp3Btn');
+const mp4Btn = document.getElementById('mp4Btn');
