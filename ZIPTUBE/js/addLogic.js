@@ -1,6 +1,8 @@
 const addBtn = document.getElementById('addBtn');
 let table = document.querySelector('table');
+
 let saveVals = new Array();
+let titleVals = new Array();
 
 /*
 유튜브 URL 테스트
@@ -14,8 +16,13 @@ let test4 = "https://www.youtube.com/watch?v=vGxVIWJbHLg";
 
 chrome.storage.sync.get((getData) => {
     saveVals = JSON.parse(getData.pageData);
+    titleVals = JSON.parse(getData.titleData);
+
     console.log("- 추가 후 저장된 배열 -");
     console.log(saveVals);
+
+    console.log("- 유튜브 타이틀 배열 -");
+    console.log(titleVals);
 
     if(saveVals && saveVals.length > 0){
         showDownload();
@@ -53,7 +60,7 @@ function createTable(){
     checkBoxCell.innerHTML 
         = `<input type = "checkbox" class = "checkBoxes">`;
     inputCell.innerHTML 
-        = `<input type = "text" class = "youtubeUrls" value = '${saveVals[index]}'>`;
+        = `<input type = "text" class = "youtubeUrls" value = '${titleVals[index]}'>`;
 
     //클릭 시 배경색 변경
     function checkBoxColor(){
@@ -89,21 +96,25 @@ function setValue(){
     chrome.tabs.query({'active': true, 
                        'windowId': chrome.windows.WINDOW_ID_CURRENT}, function(tabs){
         let boxUrls = document.getElementsByClassName('youtubeUrls');
-        let pageUrl = tabs[0].url;
+
+        let pageUrl = tabs[0].url; // 유튜브 url - 실제 배열에 담을 것
+        let pageTitle = tabs[0].title; // 유튜브 영상 제목 - value에 담을 것
         let youtubeUrl = "";
 
         youtubeUrl = convertId(pageUrl);
         console.log(youtubeUrl);
 
         if(youtubeUrl != "ErrorUrl"){
-            boxUrls[saveVals.length].value = youtubeUrl;
+            boxUrls[saveVals.length].value = pageTitle;
             saveVals.push(youtubeUrl);
+            titleVals.push(pageTitle);
+
             console.log(saveVals.length);
 
             chrome.storage.sync.set({
             //페이지 URL를 saveVals 배열에 보내기
-            'pageData' : JSON.stringify(saveVals)
-
+            'pageData' : JSON.stringify(saveVals),
+            'titleData' : JSON.stringify(titleVals)
             }, () => {
                 console.log("Clicked Datas are being saved");
             });
@@ -130,6 +141,7 @@ function convertId(url){
         }
     }
 }
+
 
 /*function createHttpRequest5(url, callback){
     let xhr = new XMLHttpRequest();

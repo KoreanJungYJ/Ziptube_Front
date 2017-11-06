@@ -3,6 +3,7 @@ const delBtn = document.getElementById('delBtn');
 //여기서 다시 get을 해보자
 chrome.storage.sync.get((savedData) => {
     saveVals = JSON.parse(savedData.pageData);
+    titleVals = JSON.parse(savedData.titleData);
 });
 
 function showDelForm(){
@@ -51,10 +52,12 @@ function delTable(checkLeng, checkBox, table){
         if(checkBox[idx].checked === true){
             table.deleteRow(idx);
             saveVals.splice(idx, 1);
+            titleVals.splice(idx, 1);
 
             //삭제한 값 빼고 배열 저장
             chrome.storage.sync.set({
-                'pageData' : JSON.stringify(saveVals)
+                'pageData' : JSON.stringify(saveVals),
+                'titleData' : JSON.stringify(titleVals)
             }, () => {
                 console.log("Deleting!");
             });
