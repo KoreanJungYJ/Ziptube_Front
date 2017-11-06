@@ -6,7 +6,7 @@
     "version" : "1.0",
     "description" : "Youtube Files Downloader Program",
     "browser_action" : {
-        "default_icon" : "./designs/RESOURCE/logo2.png",
+        "default_icon" : "./designs/RESOURCE/logo.png",
         "default_popup" : "ziptube.html",
         "default_title" : "Ziptube"
     },
