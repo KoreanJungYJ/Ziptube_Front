@@ -12,5 +12,55 @@ downloadBtn.addEventListener('click', () => {
 
 /* Axios 통신 */
 
-const mp3Btn = document.getElementById('mp3Btn');
-const mp4Btn = document.getElementById('mp4Btn');
+const downBtns = document.getElementsByClassName('formBtns');
+Array.from(downBtns).forEach((elem, index) => {
+    elem.addEventListener('click', () => {
+        axiosConnect(index);
+    });
+});
+
+function axiosConnect(index){
+    console.log("Clicked Index : " + index);
+
+    if(index == 0){
+        axios({
+            method : 'POST',
+            url : 'https://ziptube.herokuapp.com/zip',
+            data : {
+                type : "mp3",
+                url : saveVals
+            },
+            withCredentials : false,
+            headers : {
+                "Access-Control-Allow-Origin" : '*'
+            },
+            routes : {
+                "cors" : true
+            }
+        }).then(function(data) {
+            console.log(data);
+        }).catch(function(err) {
+            console.log(err);
+        });
+    }else{
+        axios({
+            method : 'POST',
+            url : 'https://ziptube.herokuapp.com/zip',
+            data : {
+                type : "mp4",
+                url : saveVals
+            },
+            withCredentials : false,
+            headers : {
+                "Access-Control-Allow-Origin" : '*'
+            },
+            routes : {
+                "cors" : true
+            }
+        }).then(function(data) {
+            console.log(data);
+        }).catch(function(err) {
+            console.log(err);
+        });
+    }
+}
