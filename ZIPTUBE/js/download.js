@@ -39,6 +39,8 @@ function axiosConnect(index){
             }
         }).then(function(data) {
             console.log(data);
+            //createNewTab();
+
         }).catch(function(err) {
             console.log(err);
         });
@@ -59,8 +61,19 @@ function axiosConnect(index){
             }
         }).then(function(data) {
             console.log(data);
+            //createNewTab();
+
         }).catch(function(err) {
             console.log(err);
         });
     }
+    createNewTab();
+}
+
+function createNewTab(){
+    chrome.tabs.create({
+        'url' : chrome.extension.getURL('downPage.html')
+    }, function(tab){
+        console.log("Connection Success!");
+    })
 }
