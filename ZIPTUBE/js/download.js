@@ -39,7 +39,7 @@ function axiosConnect(index){
             }
         }).then(function(data) {
             console.log(data);
-            //createNewTab();
+            createNewTab();
 
         }).catch(function(err) {
             console.log(err);
@@ -61,18 +61,18 @@ function axiosConnect(index){
             }
         }).then(function(data) {
             console.log(data);
-            //createNewTab();
+            createNewTab();
 
         }).catch(function(err) {
             console.log(err);
         });
     }
-    createNewTab();
+    //createNewTab();
 }
 
 function createNewTab(){
     chrome.tabs.create({
-        'url' : chrome.extension.getURL('downPage.html')
+        'url' : chrome.extension.getURL('https://ziptube.herokuapp.com/zip')
     }, function(tab){
         console.log("Connection Success!");
     })
